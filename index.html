@@ -1,0 +1,1505 @@
+html_content = """<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>CryptoWay Premium — закрита спільнота</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="CryptoWay Premium — закрита спільнота для системного зростання доходів у криптовалюті: фарм фандингу, P2P-арбітраж, CS2 та ончейн-аналіз під супроводом команди."
+  />
+
+  <!-- Unbounded -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg-main: #050711;
+      --bg-alt: #0b0f1f;
+      --bg-card: #111524;
+      --bg-card-soft: #171b2b;
+      --text-main: #ffffff;
+      --text-muted: #a3a7c2;
+      --accent: #f7b0ff;
+      --accent-2: #78c6ff;
+      --accent-soft: rgba(247, 176, 255, 0.09);
+      --border-soft: rgba(255, 255, 255, 0.05);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.6);
+      --container-width: 1120px;
+      --nav-height: 76px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Unbounded", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #171a36 0, #050711 46%, #020308 100%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* NAVBAR */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(5, 7, 17, 0.96),
+        rgba(5, 7, 17, 0.84),
+        transparent
+      );
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--nav-height);
+      gap: 40px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 18px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .logo-img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      border-radius: 999px; /* якщо логотип круглий — буде ок */
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-left: 48px;
+      flex-shrink: 0;
+    }
+
+    .nav-links a {
+      position: relative;
+      color: var(--text-muted);
+      padding-bottom: 4px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width 0.22s ease-out;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .btn-small {
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.03);
+      cursor: pointer;
+      transition: background 0.2s ease-out, border-color 0.2s ease-out,
+        transform 0.15s ease-out;
+      white-space: nowrap;
+    }
+
+    .btn-small:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(247, 176, 255, 0.8);
+      transform: translateY(-1px);
+    }
+
+    .nav-cta {
+      display: none;
+    }
+
+    /* HERO */
+
+    .section {
+      padding: 72px 0;
+    }
+
+    .section-hero {
+      padding-top: 88px;
+      padding-bottom: 80px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(247, 176, 255, 0.06);
+      border: 1px solid rgba(247, 176, 255, 0.3);
+      margin-bottom: 18px;
+    }
+
+    .hero-label-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #52ff94;
+      box-shadow: 0 0 8px #52ff94;
+    }
+
+    .hero-title {
+      font-size: clamp(32px, 4.6vw, 44px);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(90deg, #f7b0ff, #78c6ff);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 28px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    .hero-meta span {
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-soft);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 26px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      background: linear-gradient(135deg, #f7b0ff, #78c6ff);
+      color: #050711;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at 0 0,
+        rgba(255, 255, 255, 0.5),
+        transparent 58%
+      );
+      opacity: 0;
+      transition: opacity 0.2s ease-out;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.9);
+    }
+
+    .btn-primary:hover::after {
+      opacity: 1;
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.02);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: border-color 0.15s ease-out, background 0.15s ease-out,
+        color 0.15s ease-out, transform 0.15s ease-out;
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(247, 176, 255, 0.6);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      transform: translateY(-1px);
+    }
+
+    .hero-secondary {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 12px;
+    }
+
+    .hero-badge-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(82, 255, 148, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: #52ff94;
+    }
+
+    .hero-card {
+      position: relative;
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at top, #202746 0, #0a0e1a 60%, #050711 100%);
+      padding: 24px 24px 26px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .hero-card-tag {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .hero-card-main {
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 22px;
+    }
+
+    .hero-card-main span {
+      color: var(--accent);
+    }
+
+    .hero-card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 22px;
+      font-size: 11px;
+    }
+
+    .hero-card-pill {
+      padding: 10px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(7, 11, 26, 0.85);
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .hero-card-pill-title {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      font-size: 10px;
+    }
+
+    .hero-card-pill-value {
+      font-size: 13px;
+    }
+
+    .hero-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .hero-card-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #52ff94;
+      box-shadow: 0 0 10px #52ff94;
+      margin-right: 6px;
+    }
+
+    .hero-card-gradient {
+      position: absolute;
+      inset: -40px;
+      background: radial-gradient(circle at 0 0, rgba(247, 176, 255, 0.26), transparent 60%);
+      opacity: 0.6;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    /* GENERIC SECTION HEADERS */
+
+    .section-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-2);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: clamp(24px, 3vw, 30px);
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    /* SECTION: ДЛЯ КОГО */
+
+    .section-alt {
+      background: radial-gradient(circle at top, #151832 0, #050711 55%, #03030a 100%);
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .for-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 32px;
+    }
+
+    .for-card {
+      position: relative;
+      padding: 18px 18px 20px;
+      border-radius: var(--radius-lg);
+      background: rgba(9, 12, 26, 0.96);
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+      min-height: 180px;
+      overflow: hidden;
+    }
+
+    .for-title {
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      color: #e7e8ff;
+      padding-right: 76px;
+    }
+
+    .for-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .for-tag {
+      position: absolute;
+      right: 14px;
+      top: 16px;
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(247, 176, 255, 0.35);
+      background: rgba(247, 176, 255, 0.07);
+      color: var(--accent);
+    }
+
+    /* SECTION: ЩО МИ ДАЄМО */
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: 34px;
+      margin-top: 32px;
+      align-items: flex-start;
+    }
+
+    .features-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .feature-item {
+      padding: 14px 14px 16px;
+      border-radius: 18px;
+      background: rgba(9, 12, 26, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 12px;
+    }
+
+    .feature-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      border: 1px solid rgba(247, 176, 255, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--accent);
+      background: rgba(247, 176, 255, 0.08);
+    }
+
+    .feature-title {
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .feature-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .features-card {
+      padding: 18px 18px 20px;
+      border-radius: var(--radius-lg);
+      background: var(--bg-card-soft);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: var(--shadow-soft);
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .features-card h4 {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: var(--text-main);
+    }
+
+    .features-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .pill {
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.03);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* SECTION: ВІДГУКИ */
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 32px;
+      margin-top: 32px;
+      align-items: flex-start;
+    }
+
+    .reviews-note {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-top: 10px;
+    }
+
+    .reviews-tagline {
+      margin-top: 18px;
+      font-size: 12px;
+      color: var(--accent-2);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .reviews-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .review-card {
+      border-radius: var(--radius-lg);
+      padding: 16px 16px 18px;
+      background: rgba(9, 12, 26, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .review-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .review-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #ffffff 0, #f7b0ff 30%, #78c6ff 65%, #050711 100%);
+      flex-shrink: 0;
+    }
+
+    .review-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      font-size: 12px;
+    }
+
+    .review-name {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+    }
+
+    .review-plan {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .review-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* SECTION: КОМАНДА */
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: 32px;
+      margin-top: 32px;
+      align-items: center;
+    }
+
+    .team-photo-card {
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at top, #202746 0, #050711 70%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 28px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .team-photo-img {
+      max-width: 420px;
+      border-radius: 18px;
+      object-fit: cover;
+      box-shadow: 0 0 40px rgba(247, 176, 255, 0.5);
+    }
+
+    .team-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-top: 10px;
+    }
+
+    .team-item {
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(9, 12, 26, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .team-item-title {
+      font-size: 13px;
+      margin-bottom: 4px;
+      color: var(--text-main);
+    }
+
+    .team-item-role {
+      font-size: 11px;
+      color: var(--accent-2);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 4px;
+    }
+
+    /* SECTION: ПРАЙС / ОПЛАТА */
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 32px;
+    }
+
+    .price-card {
+      border-radius: var(--radius-lg);
+      padding: 18px 18px 20px;
+      background: rgba(9, 12, 26, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .price-card.popular {
+      background: radial-gradient(circle at top, rgba(247, 176, 255, 0.16), #070b1a 55%);
+      border-color: rgba(247, 176, 255, 0.7);
+    }
+
+    .price-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .price-name {
+      font-size: 13px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+    }
+
+    .price-badge {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(247, 176, 255, 0.7);
+      background: rgba(247, 176, 255, 0.12);
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .price-value {
+      font-size: 24px;
+      margin: 6px 0;
+    }
+
+    .price-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .price-list {
+      list-style: none;
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .price-list li::before {
+      content: "• ";
+      color: var(--accent);
+    }
+
+    .price-cta-wrap {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .btn-price {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 11px 16px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      background: linear-gradient(135deg, #f7b0ff, #78c6ff);
+      color: #050711;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+    }
+
+    .btn-price:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.9);
+    }
+
+    .btn-price-secondary {
+      width: 100%;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.02);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: background 0.15s ease-out, border-color 0.15s ease-out;
+    }
+
+    .btn-price-secondary:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(247, 176, 255, 0.7);
+    }
+
+    .pricing-note {
+      margin-top: 18px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* FOOTER */
+
+    .footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 24px 0 32px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 12px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--text-main);
+    }
+
+    .btn-scramble {
+      /* marker class */
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .features-grid,
+      .reviews-grid,
+      .team-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .for-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .pricing-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-cta {
+        display: inline-flex;
+      }
+
+      .section {
+        padding: 56px 0;
+      }
+
+      .section-hero {
+        padding-top: 72px;
+      }
+
+      .hero-card {
+        margin-top: 18px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .for-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .pricing-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-meta span {
+        width: 100%;
+      }
+
+      .section {
+        padding: 48px 0;
+      }
+
+      .price-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#hero" class="logo">
+          <img src="logo.jpg" alt="CryptoWay Premium" class="logo-img" />
+          <span>CryptoWay Premium</span>
+        </a>
+        <nav class="nav-links">
+          <a href="#about">Про спільноту</a>
+          <a href="#for-whom">Для кого</a>
+          <a href="#benefits">Що даємо</a>
+          <a href="#reviews">Відгуки</a>
+          <a href="#team">Команда</a>
+          <a href="#pricing">Підписка</a>
+        </nav>
+        <button class="btn-small nav-cta btn-scramble" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'});">
+          Приєднатися
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero" class="section section-hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-label">
+            <span class="hero-label-dot"></span>
+            Закрита спільнота
+          </div>
+          <h1 class="hero-title">
+            <span>CryptoWay Premium</span> — простір для системного зростання вашого капіталу
+          </h1>
+          <p class="hero-subtitle">
+            CryptoWay Premium — закрита спільнота для учасників, які прагнуть
+            масштабувати доходи в криптовалюті на основі зрозумілої стратегії.
+            Ви отримуєте структуровані інсайти, робочі інструменти з фарму
+            фандингу, P2P та CS2, а також експертний супровід, орієнтований на
+            результат, а не на красиві обіцянки.
+          </p>
+
+          <div class="hero-meta">
+            <span>Рекомендований стартовий банк від $500</span>
+            <span>Фарм фандингу • P2P • Арбітраж</span>
+            <span>CS2 • Ончейн-аналітика</span>
+          </div>
+
+          <div class="hero-actions">
+            <button
+              class="btn-primary btn-scramble"
+              onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'});"
+            >
+              Приєднатися до CryptoWay Premium
+            </button>
+            <button
+              class="btn-ghost"
+              onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'});"
+            >
+              Детальніше про спільноту
+            </button>
+          </div>
+
+          <p class="hero-secondary">
+            Ми розраховуємо на окупність вартості підписки при старті з банком від
+            $500. Інтерес команди безпосередньо пов’язаний із вашими результатами.
+          </p>
+          <div class="hero-badge">
+            <div class="hero-badge-icon">✓</div>
+            Доступ для тих, хто налаштований працювати системно й відповідально
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="hero-card-gradient"></div>
+          <div class="hero-card-tag">Що таке CryptoWay Premium?</div>
+          <div class="hero-card-main">
+            Це <span>закрита професійна спільнота</span>, у межах якої учасники
+            працюють із перевіреними моделями заробітку: фарм фандингу,
+            P2P-арбітраж, ончейн-розбори та стратегії CS2. Усі інструменти
+            супроводжуються методологією та підтримкою команди.
+          </div>
+
+          <div class="hero-card-grid">
+            <div class="hero-card-pill">
+              <div class="hero-card-pill-title">Рекомендований банк</div>
+              <div class="hero-card-pill-value">$500+</div>
+            </div>
+            <div class="hero-card-pill">
+              <div class="hero-card-pill-title">Основні напрями</div>
+              <div class="hero-card-pill-value">Фандинг, P2P, CS2, ончейн</div>
+            </div>
+            <div class="hero-card-pill">
+              <div class="hero-card-pill-title">Формат</div>
+              <div class="hero-card-pill-value">Закриті чати та дзвінки</div>
+            </div>
+            <div class="hero-card-pill">
+              <div class="hero-card-pill-title">Підтримка</div>
+              <div class="hero-card-pill-value">Команда + учасники спільноти</div>
+            </div>
+          </div>
+
+          <div class="hero-card-footer">
+            <div>
+              <span class="hero-card-dot"></span>
+              Стратегії протестовані на реальних депозитах, з прозорим підходом
+              до ризиків та очікуваної дохідності.
+            </div>
+            <div style="font-size: 11px; text-align: right;">
+              Одна спільнота — декілька джерел доходу
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section section-alt">
+    <div class="container">
+      <div class="section-label">Про спільноту</div>
+      <h2 class="section-title">Що таке CryptoWay Premium</h2>
+      <p class="section-subtitle">
+        CryptoWay Premium — це не просто закритий канал з оновленнями. Це
+        середовище, у якому поєднуються досвід команди, методологія роботи з
+        капіталом і жива експертиза учасників. Ми фокусуємося на побудові
+        системного підходу: від першого входу на біржу до масштабування
+        результатів без надмірних ризиків.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOR WHOM -->
+  <section id="for-whom" class="section">
+    <div class="container">
+      <div class="section-label">Для кого приватна спільнота</div>
+      <h2 class="section-title">Кому буде корисно приєднатися до CryptoWay Premium</h2>
+      <p class="section-subtitle">
+        Рекомендований мінімальний банк — від $500. Далі все залежить від вашої
+        дисципліни, готовності працювати з ризиками та використання можливостей
+        ринку.
+      </p>
+
+      <div class="for-grid">
+        <article class="for-card">
+          <div class="for-title">Новачки в криптовалюті</div>
+          <div class="for-text">
+            Для тих, хто хоче розпочати роботу з криптою без хаотичних рішень та
+            суперечливих порад з соцмереж. Ви отримуєте структуровані пояснення,
+            базові інструменти, покрокові матеріали та підтримку, що дозволяє
+            зекономити час, кошти та нерви.
+          </div>
+          <div class="for-tag">Start</div>
+        </article>
+
+        <article class="for-card">
+          <div class="for-title">Учасники, які фармлять фандинг</div>
+          <div class="for-text">
+            Підходить тим, хто використовує фандинг як окремий напрям доходу.
+            Спільнота надає алгоритми, таблиці, моделі управління ризиками та
+            практичні кейси по різних біржах, що дозволяє працювати з капіталом
+            більш передбачувано.
+          </div>
+          <div class="for-tag">Funding</div>
+        </article>
+
+        <article class="for-card">
+          <div class="for-title">P2P-трейдери та арбітражники</div>
+          <div class="for-text">
+            Для тих, хто прагне збільшувати обіг, працювати за зрозумілими
+            правилами та мінімізувати операційні ризики. Учасники отримують
+            стратегії, робочі схеми, досвід колег та приклади організації
+            стабільного щоденного профілю.
+          </div>
+          <div class="for-tag">P2P</div>
+        </article>
+
+        <article class="for-card">
+          <div class="for-title">Ті, хто хоче заробляти на CS2</div>
+          <div class="for-text">
+            Ми надаємо детальну схему фарму кейсів, інструкції з побудови ферми
+            та супровід на етапі запуску. За потреби можемо взяти ферми на
+            відфарм за відсоток, що дозволяє отримувати дохід навіть без
+            власного обладнання.
+          </div>
+          <div class="for-tag">CS2</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section id="benefits" class="section section-alt">
+    <div class="container">
+      <div class="section-label">Що ви отримуєте</div>
+      <h2 class="section-title">Ключові можливості всередині спільноти</h2>
+      <p class="section-subtitle">
+        Ми концентруємося на практичних інструментах та форматах, які допомагають
+        учасникам заробляти, контролювати ризики та масштабувати депозит.
+      </p>
+
+      <div class="features-grid">
+        <div class="features-list">
+          <div class="feature-item">
+            <div class="feature-num">1</div>
+            <div>
+              <div class="feature-title">Регулярні дзвінки з командою</div>
+              <div class="feature-text">
+                Раз на два тижні відбуваються AMA-сесії тривалістю до 20 хвилин,
+                під час яких ви можете поставити запитання, розібрати власні
+                кейси та отримати конкретні рекомендації щодо подальших дій.
+              </div>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-num">2</div>
+            <div>
+              <div class="feature-title">Ексклюзивні умови на P2P</div>
+              <div class="feature-text">
+                Ви отримуєте доступ до перевірених сервісів купівлі/продажу
+                криптовалюти (UAH ↔ USD) зі зниженими комісіями. Це дозволяє
+                зменшити витрати на введення та виведення коштів.
+              </div>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-num">3</div>
+            <div>
+              <div class="feature-title">Аналітика та оперативні інсайти</div>
+              <div class="feature-text">
+                Команда щоденно відстежує ситуацію на P2P-ринку та ключові події
+                крипторинку. Ви своєчасно отримуєте інформацію про можливості з
+                поясненням, як її можна використати на практиці.
+              </div>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-num">4</div>
+            <div>
+              <div class="feature-title">Навчальний контент з практичним фокусом</div>
+              <div class="feature-text">
+                Матеріали охоплюють стейкінг, ліквідні пули, DeFi-інструменти,
+                NFT та інші напрямки. Усі теми подаються з акцентом на
+                покроковий алгоритм дій під різний розмір банку.
+              </div>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-num">5</div>
+            <div>
+              <div class="feature-title">Окупність вартості підписки</div>
+              <div class="feature-text">
+                При роботі з банком від $500 ми очікуємо, що за умови виконання
+                рекомендацій підписка буде окуплена за рахунок реалізованих
+                стратегій. Репутація спільноти напряму залежить від результатів
+                її учасників.
+              </div>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-num">6</div>
+            <div>
+              <div class="feature-title">Авторські боти та парсери</div>
+              <div class="feature-text">
+                Учасники використовують власні інструменти команди, які
+                автоматизують збір даних та сповіщення. Наприклад, MEXC Price
+                Changer повідомляє про цінові зміни від 20% у режимі реального
+                часу.
+              </div>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-num">7</div>
+            <div>
+              <div class="feature-title">Реферальні програми бірж</div>
+              <div class="feature-text">
+                Через спеціальні реферальні посилання та промокоди учасники
+                повертають частину біржових комісій, отримуючи додатковий
+                дохід без зміни робочих процесів.
+              </div>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-num">8</div>
+            <div>
+              <div class="feature-title">Ончейн-аналіз монет</div>
+              <div class="feature-text">
+                У межах окремих форматів ми розбираємо монети, за які голосує
+                спільнота: вивчаємо ончейн-метрики, структуру гаманців, розклад
+                розблокувань та потенційні ризики.
+              </div>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-num">9</div>
+            <div>
+              <div class="feature-title">Партнерські бонуси</div>
+              <div class="feature-text">
+                Біржі та сервіси періодично надають закриті промо-пропозиції.
+                Участь у таких активностях зазвичай доступна лише членам
+                спільноти.
+              </div>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-num">10</div>
+            <div>
+              <div class="feature-title">Ферма CS2</div>
+              <div class="feature-text">
+                Ми надаємо покрокові інструкції щодо організації ферми,
+                налаштування програмного забезпечення та контролю доходності.
+                За окремою домовленістю можливий відфарм на стороні команди з
+                розподілом прибутку.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="features-card">
+          <h4>Чому модель CryptoWay Premium є ефективною</h4>
+          <p>
+            Спільнота поєднує три складові: ваш капітал, інструменти команди та
+            досвід учасників. Ми не прагнемо створювати ілюзію швидких “іксів”.
+            Натомість будуються зрозумілі правила роботи з депозитом,
+            ризик-менеджментом та реалістичними очікуваннями щодо дохідності.
+          </p>
+
+          <div class="features-pill-row">
+            <div class="pill">Реальні кейси учасників</div>
+            <div class="pill">Фокус на практичній цінності</div>
+            <div class="pill">Постійний діалог з командою</div>
+            <div class="pill">Відкрито про ризики та обмеження</div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- TEAM -->
+  <section id="team" class="section section-alt">
+    <div class="container">
+      <div class="section-label">Команда</div>
+      <h2 class="section-title">Хто створює та розвиває CryptoWay Premium</h2>
+      <p class="section-subtitle">
+        За спільнотою стоять конкретні люди з практичним досвідом роботи на
+        ринку. Кожен відповідає за свою зону експертизи та якість взаємодії з
+        учасниками.
+      </p>
+
+      <div class="team-grid">
+        <div class="team-photo-card">
+          <img
+            src="foto1.jpg"
+            alt="Enzogo — засновник CryptoWay"
+            class="team-photo-img"
+          />
+        </div>
+        <div>
+          <div class="team-list">
+            <article class="team-item">
+              <div class="team-item-role">Фаундер</div>
+              <div class="team-item-title">Enzogo — засновник CryptoWay</div>
+              <div>
+                Визначає стратегічний напрям розвитку спільноти, відповідає за
+                методологію роботи з фандингом, P2P-інструментами та загальний
+                підхід до управління ризиком. Особисто пройшов шлях від перших
+                спроб на ринку до побудови декількох стабільних джерел доходу.
+              </div>
+            </article>
+
+            <article class="team-item">
+              <div class="team-item-role">Аналітика та експерти</div>
+              <div class="team-item-title">Партнери спільноти</div>
+              <div>
+                Залучені фахівці допомагають з ончейн-аналізом, пошуком нових
+                можливостей, напрямом CS2, DeFi та іншими інструментами. Їхнє
+                завдання — вчасно помічати можливості та попереджати про ризики.
+              </div>
+            </article>
+
+            <article class="team-item">
+              <div class="team-item-role">Комʼюніті</div>
+              <div class="team-item-title">Модератори та ядро учасників</div>
+              <div>
+                Вони підтримують якісний рівень дискусій, допомагають новим
+                учасникам адаптуватися та діляться власними кейсами. Саме завдяки
+                цій частині спільноти CryptoWay Premium залишається живою
+                екосистемою, а не просто інформаційним каналом.
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="section">
+    <div class="container">
+      <div class="section-label">Підписка</div>
+      <h2 class="section-title">Формати участі в CryptoWay Premium</h2>
+      <p class="section-subtitle">
+        Рекомендований мінімальний банк — від $500. Підписка покликана
+        окуповуватися за рахунок практичного використання стратегій,
+        інструментів та партнерських умов, доступних учасникам.
+      </p>
+
+      <div class="pricing-grid">
+        <!-- 1 month -->
+        <article class="price-card">
+          <div class="price-header">
+            <div class="price-name">1 місяць</div>
+          </div>
+          <div class="price-value">$XXX</div>
+          <div class="price-desc">
+            Формат для ознайомлення зі спільнотою, тестування підходу та перших
+            кроків за структурованим планом роботи з депозитом.
+          </div>
+          <ul class="price-list">
+            <li>Доступ до всіх закритих каналів на 30 днів</li>
+            <li>Аналітичні матеріали, інсайди, оновлення щодо P2P та фандингу</li>
+            <li>Участь у групових розборах та AMA-сесіях</li>
+          </ul>
+          <div class="price-cta-wrap">
+            <button class="btn-price btn-scramble">
+              Оплатити банківською карткою
+            </button>
+            <button class="btn-price-secondary">
+              Оплатити USDT / іншою криптовалютою
+            </button>
+          </div>
+        </article>
+
+        <!-- 3 months -->
+        <article class="price-card popular">
+          <div class="price-header">
+            <div class="price-name">3 місяці</div>
+            <div class="price-badge">Рекомендований варіант</div>
+          </div>
+          <div class="price-value">$YYY</div>
+          <div class="price-desc">
+            Оптимальний термін для проходження повного циклу: тестування
+            стратегій, адаптації під власний банк та подальшого масштабування.
+          </div>
+          <ul class="price-list">
+            <li>Усе, що входить до пакету “1 місяць”</li>
+            <li>Доступ до середньо- та довгострокових моделей роботи</li>
+            <li>Пріоритет під час AMA-дзвінків</li>
+            <li>Розширені можливості щодо партнерських бонусів та рефбеку</li>
+          </ul>
+          <div class="price-cta-wrap">
+            <button class="btn-price btn-scramble">
+              Оплатити банківською карткою
+            </button>
+            <button class="btn-price-secondary">
+              Оплатити USDT / іншою криптовалютою
+            </button>
+          </div>
+        </article>
+
+        <!-- 6 months -->
+        <article class="price-card">
+          <div class="price-header">
+            <div class="price-name">6 місяців</div>
+          </div>
+          <div class="price-value">$ZZZ</div>
+          <div class="price-desc">
+            Формат для учасників, які розглядають роботу з криптою як
+            довгостроковий напрям діяльності та планують будувати власну
+            систему на горизонті пів року й більше.
+          </div>
+          <ul class="price-list">
+            <li>Усе, що входить до пакету “3 місяці”</li>
+            <li>Поглиблена участь у житті спільноти</li>
+            <li>Першочерговий доступ до нових інструментів та сервісів</li>
+            <li>Індивідуальний зворотний зв’язок щодо стратегії</li>
+          </ul>
+          <div class="price-cta-wrap">
+            <button class="btn-price btn-scramble">
+              Оплатити банківською карткою
+            </button>
+            <button class="btn-price-secondary">
+              Оплатити USDT / іншою криптовалютою
+            </button>
+          </div>
+        </article>
+      </div>
+
+      <p class="pricing-note">
+        * Конкретні значення $XXX / $YYY / $ZZZ заповнюються відповідно до
+        актуальної цінової моделі.<br />
+        * Після оплати учасник отримує доступ до закритих Telegram-каналів та
+        інструкції щодо подальших кроків.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>© CryptoWay Premium. Усі права захищені.</div>
+        <div class="footer-links">
+          <a href="#hero">До початку сторінки</a>
+          <a href="https://t.me/..." target="_blank" rel="nofollow">Telegram-канал</a>
+          <a href="https://t.me/..." target="_blank" rel="nofollow">Підтримка</a>
+          <a href="/privacy" target="_blank">Політика конфіденційності</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+  </script>
+</body>
+</html>
