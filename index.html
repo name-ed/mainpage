@@ -16,6 +16,9 @@
     href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700&display=swap"
     rel="stylesheet"
   />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/name-ed/calendar/refs/heads/main/favicon-32x327.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://raw.githubusercontent.com/name-ed/calendar/refs/heads/main/favicon-16x167.png">
+		<link rel="shortcut icon" href="https://raw.githubusercontent.com/name-ed/calendar/refs/heads/main/favicon7.ico">
 
   <style>
     :root {
@@ -107,7 +110,7 @@
       width: 32px;
       height: 32px;
       object-fit: contain;
-      border-radius: 999px; /* якщо логотип круглий — буде ок */
+      border-radius: 999px;
       display: block;
     }
 
@@ -160,6 +163,7 @@
       transition: background 0.2s ease-out, border-color 0.2s ease-out,
         transform 0.15s ease-out;
       white-space: nowrap;
+      color: var(--text-main);
     }
 
     .btn-small:hover {
@@ -179,15 +183,15 @@
     }
 
     .section-hero {
-      padding-top: 88px;
-      padding-bottom: 80px;
+      padding-top: 40px;
+      padding-bottom: 56px;
     }
 
     .hero-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
       gap: 48px;
-      align-items: center;
+      align-items: start;
     }
 
     .hero-label {
@@ -219,6 +223,13 @@
       letter-spacing: -0.03em;
       margin-bottom: 18px;
     }
+	.hero-title-sub{
+  display: inline;
+  font-size: 0.68em;   /* регулюй: 0.6–0.8 */
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: rgba(255,255,255,0.88);
+}
 
     .hero-title span {
       background: linear-gradient(90deg, #f7b0ff, #78c6ff);
@@ -362,11 +373,11 @@
     }
 
     .hero-card-tag {
-      font-size: 11px;
+      font-size: 13px;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--text-muted);
-      margin-bottom: 10px;
+      margin-bottom: 14px;
     }
 
     .hero-card-main {
@@ -388,13 +399,17 @@
     }
 
     .hero-card-pill {
-      padding: 10px 11px;
+      padding: 16px 14px;
       border-radius: 999px;
       border: 1px solid rgba(255, 255, 255, 0.06);
       background: rgba(7, 11, 26, 0.85);
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 4px;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      min-height: 80px;
     }
 
     .hero-card-pill-title {
@@ -405,7 +420,8 @@
     }
 
     .hero-card-pill-value {
-      font-size: 13px;
+      font-size: 11px;
+      line-height: 1.4;
     }
 
     .hero-card-footer {
@@ -468,7 +484,7 @@
 
     .for-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 18px;
       margin-top: 32px;
     }
@@ -476,6 +492,7 @@
     .for-card {
       position: relative;
       padding: 18px 18px 20px;
+      padding-top: 46px; /* місце під плашку зверху */
       border-radius: var(--radius-lg);
       background: rgba(9, 12, 26, 0.96);
       border: 1px solid var(--border-soft);
@@ -490,7 +507,7 @@
       text-transform: uppercase;
       margin-bottom: 10px;
       color: #e7e8ff;
-      padding-right: 76px;
+      padding-right: 92px; /* щоб заголовок не підлазив під плашку */
     }
 
     .for-text {
@@ -499,16 +516,26 @@
       line-height: 1.7;
     }
 
+    /* ПЛАШКА: ВГОРІ СПРАВА */
     .for-tag {
       position: absolute;
-      right: 14px;
       top: 16px;
+      right: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      margin: 0;
+      white-space: nowrap;
+
       font-size: 11px;
-      padding: 4px 9px;
+      padding: 4px 10px;
       border-radius: 999px;
+
       border: 1px solid rgba(247, 176, 255, 0.35);
       background: rgba(247, 176, 255, 0.07);
       color: var(--accent);
+      z-index: 2;
     }
 
     /* SECTION: ЩО МИ ДАЄМО */
@@ -906,6 +933,149 @@
       /* marker class */
     }
 
+    /* ---------- FIX: reviews inside features-card ---------- */
+	.features-card { position: relative; }
+
+	@media (min-width: 961px) {
+	  .features-card { position: sticky; top: calc(var(--nav-height) + 18px); }
+	}
+	@media (max-width: 960px) {
+	  .features-card { position: static; top: auto; }
+	}
+
+	.features-reviews{
+	  margin-top: 14px;
+	  padding-top: 14px;
+	  border-top: 1px solid rgba(255,255,255,0.06);
+	}
+
+	.features-reviews-head{
+	  display:flex;
+	  align-items:center;
+	  justify-content:space-between;
+	  gap:12px;
+	  margin-bottom:10px;
+	}
+
+	.features-reviews-title{
+	  font-size:12px;
+	  letter-spacing:.16em;
+	  text-transform:uppercase;
+	  color: var(--accent-2);
+	}
+
+	.features-reviews-badge{
+	  font-size:10px;
+	  letter-spacing:.14em;
+	  text-transform:uppercase;
+	  padding:4px 10px;
+	  border-radius:999px;
+	  border:1px solid rgba(247,176,255,.35);
+	  background: rgba(247,176,255,.07);
+	  color: var(--accent);
+	  white-space:nowrap;
+	}
+
+	.testimonial-main{
+	  border-radius:16px;
+	  border:1px solid rgba(255,255,255,0.06);
+	  background: rgba(9,12,26,0.55);
+	  padding:14px 14px 16px;
+	}
+
+	.testimonial-top{
+	  display:flex;
+	  align-items:center;
+	  justify-content:space-between;
+	  gap:10px;
+	  margin-bottom:10px;
+	}
+
+	.testimonial-person{
+	  display:flex;
+	  align-items:center;
+	  gap:10px;
+	  min-width:0;
+	}
+
+	.testimonial-avatar{
+	  width:28px;height:28px;border-radius:999px;flex-shrink:0;
+	  background: radial-gradient(circle at 30% 0, #ffffff 0, #f7b0ff 30%, #78c6ff 65%, #050711 100%);
+	}
+
+	.testimonial-name{
+	  font-size:11px;
+	  letter-spacing:.12em;
+	  text-transform:uppercase;
+	  white-space:nowrap;
+	  overflow:hidden;
+	  text-overflow:ellipsis;
+	  color: rgba(255,255,255,0.9);
+	}
+
+	.testimonial-tag{
+	  font-size:10px;
+	  letter-spacing:.12em;
+	  text-transform:uppercase;
+	  padding:4px 8px;
+	  border-radius:999px;
+	  border:1px solid rgba(120,198,255,.35);
+	  background: rgba(120,198,255,.08);
+	  color: var(--accent-2);
+	  flex-shrink:0;
+	}
+
+	.testimonial-text{
+	  font-size:13px;
+	  color: var(--text-muted);
+	  line-height:1.7;
+	}
+
+	.testimonial-metrics{
+	  margin-top:10px;
+	  display:flex;
+	  flex-wrap:wrap;
+	  gap:10px;
+	}
+	.testimonial-metrics span{
+	  padding:6px 10px;
+	  border-radius:999px;
+	  border:1px solid rgba(255,255,255,0.06);
+	  background: rgba(255,255,255,0.03);
+	  font-size:11px;
+	  color: rgba(255,255,255,0.72);
+	}
+
+	.testimonial-mini-grid{
+	  margin-top:12px;
+	  display:grid;
+	  grid-template-columns:1fr;
+	  gap:10px;
+	}
+	@media (min-width: 1080px){
+	  .testimonial-mini-grid{ grid-template-columns:1fr 1fr; }
+	}
+
+	.testimonial-mini{
+	  padding:12px 12px 13px;
+	  border-radius:14px;
+	  border:1px solid rgba(255,255,255,0.06);
+	  background: rgba(255,255,255,0.03);
+	}
+	.testimonial-mini .q{
+	  font-size:13px;
+	  color: var(--text-muted);
+	  line-height:1.7;
+	}
+	.testimonial-mini .who{
+	  margin-top:8px;
+	  font-size:11px;
+	  letter-spacing:.12em;
+	  text-transform:uppercase;
+	  color: rgba(255,255,255,0.7);
+	}
+
+
     /* RESPONSIVE */
 
     @media (max-width: 960px) {
@@ -972,16 +1142,163 @@
         align-items: flex-start;
         gap: 4px;
       }
+
+      .for-title {
+        padding-right: 80px; /* трішки менше на мобільному */
+      }
+		  
+	.features-card { position: relative; }
+
+	@media (min-width: 961px) {
+	  .features-card { position: sticky; top: calc(var(--nav-height) + 18px); }
+	}
+	@media (max-width: 960px) {
+	  .features-card { position: static; top: auto; }
+	}
+
+	.features-reviews{
+	  margin-top: 14px;
+	  padding-top: 14px;
+	  border-top: 1px solid rgba(255,255,255,0.06);
+	}
+
+	.features-reviews-head{
+	  display:flex;
+	  align-items:center;
+	  justify-content:space-between;
+	  gap:12px;
+	  margin-bottom:10px;
+	}
+
+	.features-reviews-title{
+	  font-size:12px;
+	  letter-spacing:.16em;
+	  text-transform:uppercase;
+	  color: var(--accent-2);
+	}
+
+	.features-reviews-badge{
+	  font-size:10px;
+	  letter-spacing:.14em;
+	  text-transform:uppercase;
+	  padding:4px 10px;
+	  border-radius:999px;
+	  border:1px solid rgba(247,176,255,.35);
+	  background: rgba(247,176,255,.07);
+	  color: var(--accent);
+	  white-space:nowrap;
+	}
+
+	.testimonial-main{
+	  border-radius:16px;
+	  border:1px solid rgba(255,255,255,0.06);
+	  background: rgba(9,12,26,0.55);
+	  padding:14px 14px 16px;
+	}
+
+	.testimonial-top{
+	  display:flex;
+	  align-items:center;
+	  justify-content:space-between;
+	  gap:10px;
+	  margin-bottom:10px;
+	}
+
+	.testimonial-person{
+	  display:flex;
+	  align-items:center;
+	  gap:10px;
+	  min-width:0;
+	}
+
+	.testimonial-avatar{
+	  width:28px;height:28px;border-radius:999px;flex-shrink:0;
+	  background: radial-gradient(circle at 30% 0, #ffffff 0, #f7b0ff 30%, #78c6ff 65%, #050711 100%);
+	}
+
+	.testimonial-name{
+	  font-size:11px;
+	  letter-spacing:.12em;
+	  text-transform:uppercase;
+	  white-space:nowrap;
+	  overflow:hidden;
+	  text-overflow:ellipsis;
+	  color: rgba(255,255,255,0.9);
+	}
+
+	.testimonial-tag{
+	  font-size:10px;
+	  letter-spacing:.12em;
+	  text-transform:uppercase;
+	  padding:4px 8px;
+	  border-radius:999px;
+	  border:1px solid rgba(120,198,255,.35);
+	  background: rgba(120,198,255,.08);
+	  color: var(--accent-2);
+	  flex-shrink:0;
+	}
+
+	.testimonial-text{
+	  font-size:13px;
+	  color: var(--text-muted);
+	  line-height:1.7;
+	}
+
+	.testimonial-metrics{
+	  margin-top:10px;
+	  display:flex;
+	  flex-wrap:wrap;
+	  gap:10px;
+	}
+	.testimonial-metrics span{
+	  padding:6px 10px;
+	  border-radius:999px;
+	  border:1px solid rgba(255,255,255,0.06);
+	  background: rgba(255,255,255,0.03);
+	  font-size:11px;
+	  color: rgba(255,255,255,0.72);
+	}
+
+	.testimonial-mini-grid{
+	  margin-top:12px;
+	  display:grid;
+	  grid-template-columns:1fr;
+	  gap:10px;
+	}
+	@media (min-width: 1080px){
+	  .testimonial-mini-grid{ grid-template-columns:1fr 1fr; }
+	}
+
+	.testimonial-mini{
+	  padding:12px 12px 13px;
+	  border-radius:14px;
+	  border:1px solid rgba(255,255,255,0.06);
+	  background: rgba(255,255,255,0.03);
+	}
+	.testimonial-mini .q{
+	  font-size:13px;
+	  color: var(--text-muted);
+	  line-height:1.7;
+	}
+	.testimonial-mini .who{
+	  margin-top:8px;
+	  font-size:11px;
+	  letter-spacing:.12em;
+	  text-transform:uppercase;
+	  color: rgba(255,255,255,0.7);
+	}
+
     }
   </style>
 </head>
+
 <body>
   <!-- NAVBAR -->
   <header class="navbar">
     <div class="container">
       <div class="nav-inner">
         <a href="#hero" class="logo">
-          <img src="logo.jpg" alt="CryptoWay Premium" class="logo-img" />
+          <img src="logo1.jpg" alt="CryptoWay Premium" class="logo-img" />
           <span>CryptoWay Premium</span>
         </a>
         <nav class="nav-links">
@@ -992,7 +1309,8 @@
           <a href="#team">Команда</a>
           <a href="#pricing">Підписка</a>
         </nav>
-        <button class="btn-small nav-cta btn-scramble" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'});">
+        <button class="btn-small nav-cta btn-scramble"
+          onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'});">
           Приєднатися
         </button>
       </div>
@@ -1009,8 +1327,10 @@
             Закрита спільнота
           </div>
           <h1 class="hero-title">
-            <span>CryptoWay Premium</span> — простір для системного зростання вашого капіталу
-          </h1>
+		<span>CryptoWay Premium</span>
+		<span class="hero-title-sub">— простір для системного зростання вашого капіталу</span>
+			</h1>
+
           <p class="hero-subtitle">
             CryptoWay Premium — закрита спільнота для учасників, які прагнуть
             масштабувати доходи в криптовалюті на основі зрозумілої стратегії.
@@ -1026,23 +1346,19 @@
           </div>
 
           <div class="hero-actions">
-            <button
-              class="btn-primary btn-scramble"
-              onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'});"
-            >
+            <button class="btn-primary btn-scramble"
+              onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'});">
               Приєднатися до CryptoWay Premium
             </button>
-            <button
-              class="btn-ghost"
-              onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'});"
-            >
+            <button class="btn-ghost"
+              onclick="document.getElementById('about')?.scrollIntoView({behavior:'smooth'});">
               Детальніше про спільноту
             </button>
           </div>
 
           <p class="hero-secondary">
             Ми розраховуємо на окупність вартості підписки при старті з банком від
-            $500. Інтерес команди безпосередньо пов’язаний із вашими результатами.
+            $500. Інтерес команди безпосередньо пов'язаний із вашими результатами.
           </p>
           <div class="hero-badge">
             <div class="hero-badge-icon">✓</div>
@@ -1094,26 +1410,11 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="section section-alt">
-    <div class="container">
-      <div class="section-label">Про спільноту</div>
-      <h2 class="section-title">Що таке CryptoWay Premium</h2>
-      <p class="section-subtitle">
-        CryptoWay Premium — це не просто закритий канал з оновленнями. Це
-        середовище, у якому поєднуються досвід команди, методологія роботи з
-        капіталом і жива експертиза учасників. Ми фокусуємося на побудові
-        системного підходу: від першого входу на біржу до масштабування
-        результатів без надмірних ризиків.
-      </p>
-    </div>
-  </section>
-
   <!-- FOR WHOM -->
   <section id="for-whom" class="section">
     <div class="container">
       <div class="section-label">Для кого приватна спільнота</div>
-      <h2 class="section-title">Кому буде корисно приєднатися до CryptoWay Premium</h2>
+      <h2 class="section-title">Кому підходить наша крипто-спільнота</h2>
       <p class="section-subtitle">
         Рекомендований мінімальний банк — від $500. Далі все залежить від вашої
         дисципліни, готовності працювати з ризиками та використання можливостей
@@ -1122,60 +1423,57 @@
 
       <div class="for-grid">
         <article class="for-card">
-          <div class="for-title">Новачки в криптовалюті</div>
+          <div class="for-title">Для новачків у крипті</div>
           <div class="for-text">
-            Для тих, хто хоче розпочати роботу з криптою без хаотичних рішень та
-            суперечливих порад з соцмереж. Ви отримуєте структуровані пояснення,
-            базові інструменти, покрокові матеріали та підтримку, що дозволяє
-            зекономити час, кошти та нерви.
+            Прості пояснення, відеогайди та підтримка в чаті, яка економить час, гроші й нерви.
           </div>
           <div class="for-tag">Start</div>
         </article>
 
         <article class="for-card">
-          <div class="for-title">Учасники, які фармлять фандинг</div>
+          <div class="for-title">Фарм фандингу та робота з капіталом</div>
           <div class="for-text">
-            Підходить тим, хто використовує фандинг як окремий напрям доходу.
-            Спільнота надає алгоритми, таблиці, моделі управління ризиками та
-            практичні кейси по різних біржах, що дозволяє працювати з капіталом
-            більш передбачувано.
+            Чіткі алгоритми та поради від людей, які на власному досвіді вивчили механіки кожної біржі. Підійде як для старту, так і для роботи з великими сумами.
           </div>
           <div class="for-tag">Funding</div>
         </article>
 
         <article class="for-card">
-          <div class="for-title">P2P-трейдери та арбітражники</div>
+          <div class="for-title">P2P та арбітражники</div>
           <div class="for-text">
-            Для тих, хто прагне збільшувати обіг, працювати за зрозумілими
-            правилами та мінімізувати операційні ризики. Учасники отримують
-            стратегії, робочі схеми, досвід колег та приклади організації
-            стабільного щоденного профілю.
+            Акційні пропозиції від партнерів, стратегії, інсайти й досвід тих, хто щодня працює в P2P.
           </div>
           <div class="for-tag">P2P</div>
         </article>
 
         <article class="for-card">
-          <div class="for-title">Ті, хто хоче заробляти на CS2</div>
+          <div class="for-title">Заробляйте на CS2</div>
           <div class="for-text">
-            Ми надаємо детальну схему фарму кейсів, інструкції з побудови ферми
-            та супровід на етапі запуску. За потреби можемо взяти ферми на
-            відфарм за відсоток, що дозволяє отримувати дохід навіть без
-            власного обладнання.
+            Робочі схеми фарму кейсів, детальні гайди й супровід. Також беремо ферми на відпрацювання за %, щоб ви могли заробляти без обладнання.
           </div>
           <div class="for-tag">CS2</div>
+        </article>
+
+        <article class="for-card">
+          <div class="for-title">Ончейн відпрацювання</div>
+          <div class="for-text">
+            Тестнети, дропи й ончейн активність із чіткими інструкціями та підбірками перспективних проєктів.
+          </div>
+          <div class="for-tag">On-chain</div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- BENEFITS -->
+  <!-- ЩО МИ ДАЄМО -->
   <section id="benefits" class="section section-alt">
     <div class="container">
-      <div class="section-label">Що ви отримуєте</div>
-      <h2 class="section-title">Ключові можливості всередині спільноти</h2>
+      <div class="section-label">Що ми даємо</div>
+      <h2 class="section-title">Комплексний підхід до роботи з криптовалютою</h2>
       <p class="section-subtitle">
-        Ми концентруємося на практичних інструментах та форматах, які допомагають
-        учасникам заробляти, контролювати ризики та масштабувати депозит.
+        У CryptoWay Premium учасники не просто отримують окремі поради, а
+        працюють у межах чітко вибудуваної екосистеми знань, інструментів та
+        підтримки команди.
       </p>
 
       <div class="features-grid">
@@ -1183,11 +1481,12 @@
           <div class="feature-item">
             <div class="feature-num">1</div>
             <div>
-              <div class="feature-title">Регулярні дзвінки з командою</div>
+              <div class="feature-title">Фарм фандингу</div>
               <div class="feature-text">
-                Раз на два тижні відбуваються AMA-сесії тривалістю до 20 хвилин,
-                під час яких ви можете поставити запитання, розібрати власні
-                кейси та отримати конкретні рекомендації щодо подальших дій.
+                Ми навчаємо учасників працювати з різницею ставок фінансування на
+                біржах, мінімізувати ризик та отримувати щоденні виплати. Все
+                супроводжується методологією, калькуляторами та практичними
+                роз'ясненнями.
               </div>
             </div>
           </div>
@@ -1195,11 +1494,11 @@
           <div class="feature-item">
             <div class="feature-num">2</div>
             <div>
-              <div class="feature-title">Ексклюзивні умови на P2P</div>
+              <div class="feature-title">P2P-арбітраж</div>
               <div class="feature-text">
-                Ви отримуєте доступ до перевірених сервісів купівлі/продажу
-                криптовалюти (UAH ↔ USD) зі зниженими комісіями. Це дозволяє
-                зменшити витрати на введення та виведення коштів.
+                Розбираємо алгоритми роботи з P2P-майданчиками, зони прибутку,
+                обмеження, ризики блокування та основні помилки, які допускають
+                новачки. Команда ділиться власним досвідом та готовими схемами.
               </div>
             </div>
           </div>
@@ -1207,11 +1506,11 @@
           <div class="feature-item">
             <div class="feature-num">3</div>
             <div>
-              <div class="feature-title">Аналітика та оперативні інсайти</div>
+              <div class="feature-title">Ончейн-аналіз і перевірка проєктів</div>
               <div class="feature-text">
-                Команда щоденно відстежує ситуацію на P2P-ринку та ключові події
-                крипторинку. Ви своєчасно отримуєте інформацію про можливості з
-                поясненням, як її можна використати на практиці.
+                Учасники вчаться читати дані з блокчейну, розбирати структуру
+                гаманців великих гравців, графіки розблокувань та потенційні
+                сигнали для входу чи виходу з позицій.
               </div>
             </div>
           </div>
@@ -1219,11 +1518,11 @@
           <div class="feature-item">
             <div class="feature-num">4</div>
             <div>
-              <div class="feature-title">Навчальний контент з практичним фокусом</div>
+              <div class="feature-title">Доступ до партнерських сервісів</div>
               <div class="feature-text">
-                Матеріали охоплюють стейкінг, ліквідні пули, DeFi-інструменти,
-                NFT та інші напрямки. Усі теми подаються з акцентом на
-                покроковий алгоритм дій під різний розмір банку.
+                Ми налагоджуємо співпрацю з біржами та сервісами, що надають
+                ексклюзивні умови учасникам: збільшені ліміти, зменшені комісії
+                або промо-пропозиції.
               </div>
             </div>
           </div>
@@ -1231,12 +1530,11 @@
           <div class="feature-item">
             <div class="feature-num">5</div>
             <div>
-              <div class="feature-title">Окупність вартості підписки</div>
+              <div class="feature-title">Групові AMA та розбори</div>
               <div class="feature-text">
-                При роботі з банком від $500 ми очікуємо, що за умови виконання
-                рекомендацій підписка буде окуплена за рахунок реалізованих
-                стратегій. Репутація спільноти напряму залежить від результатів
-                її учасників.
+                Щотижнево або в залежності від попиту проводяться сесії,
+                де обговорюються актуальні питання: що відбувається на ринку,
+                коригуються стратегії, пояснюються тонкощі окремих методів.
               </div>
             </div>
           </div>
@@ -1244,11 +1542,11 @@
           <div class="feature-item">
             <div class="feature-num">6</div>
             <div>
-              <div class="feature-title">Авторські боти та парсери</div>
+              <div class="feature-title">Вибудовування портфеля</div>
               <div class="feature-text">
-                Учасники використовують власні інструменти команди, які
-                автоматизують збір даних та сповіщення. Наприклад, MEXC Price
-                Changer повідомляє про цінові зміни від 20% у режимі реального
+                Спільнота надає орієнтири з балансування капіталу: скільки
+                залишати на фандингу, скільки направляти в арбітраж, які частини
+                тримати в стейблах. Це знижує емоційні рішення та економить
                 часу.
               </div>
             </div>
@@ -1304,26 +1602,72 @@
           </div>
         </div>
 
-        <aside class="features-card">
-          <h4>Чому модель CryptoWay Premium є ефективною</h4>
-          <p>
-            Спільнота поєднує три складові: ваш капітал, інструменти команди та
-            досвід учасників. Ми не прагнемо створювати ілюзію швидких “іксів”.
-            Натомість будуються зрозумілі правила роботи з депозитом,
-            ризик-менеджментом та реалістичними очікуваннями щодо дохідності.
-          </p>
+<aside class="features-card">
+  <h4>Чому модель CryptoWay Premium є ефективною</h4>
+  <p>
+    Спільнота поєднує три складові: ваш капітал, інструменти команди та
+    досвід учасників. Ми не прагнемо створювати ілюзію швидких "іксів".
+    Натомість будуються зрозумілі правила роботи з депозитом,
+    ризик-менеджментом та реалістичними очікуваннями щодо дохідності.
+  </p>
 
-          <div class="features-pill-row">
-            <div class="pill">Реальні кейси учасників</div>
-            <div class="pill">Фокус на практичній цінності</div>
-            <div class="pill">Постійний діалог з командою</div>
-            <div class="pill">Відкрито про ризики та обмеження</div>
-          </div>
-        </aside>
+  <div class="features-pill-row">
+    <div class="pill">Реальні кейси учасників</div>
+    <div class="pill">Фокус на практичній цінності</div>
+    <div class="pill">Постійний діалог з командою</div>
+    <div class="pill">Відкрито про ризики та обмеження</div>
+  </div>
+
+  <div class="features-reviews" id="reviews">
+    <div class="features-reviews-head">
+      <div class="features-reviews-title">Відгуки учасників</div>
+      <div class="features-reviews-badge">Реальні кейси</div>
+    </div>
+
+    <div class="testimonial-main">
+      <div class="testimonial-top">
+        <div class="testimonial-person">
+          <div class="testimonial-avatar">
+		   <img src="vidguk1.jpg" alt="Санич Сан"></div>
+          <div class="testimonial-name">Санич Сан • Funding / P2P</div>
+        </div>
+        <div class="testimonial-tag">Системність</div>
+      </div>
+
+      <div class="testimonial-text">
+Велика подяка @Enzigo2 і його команді за щоденні “Дайджести основних подій” — це реально одна з найкращих фішок.Мені економить вагон часу ,бо не завжди є можливості постійно слідкувати за ринком.
+
+Також окремо хочу відзначити напрям фандингу — завдяки поясненням у каналі й відео гайду вдалось розібратись і вже отримати свій перший гарний результат. Все доступно і дійсно працює.
+
+Загалом — все на високому рівні)
+Контент якісний, спільнота активна, автор завжди на зв’язку.
+І що найважливіше ця підписка РЕАЛЬНО вартує своїх грошей. Це не просто інформація, це інвестиція в твоє розуміння ринку і заробіток.
+Респект за роботу!
+      </div>
+
+      <div class="testimonial-metrics">
+        <span>Менше хаосу</span>
+        <span>Більше контролю</span>
+        <span>Фокус на дисципліні</span>
+      </div>
+    </div>
+
+    <div class="testimonial-mini-grid">
+      <div class="testimonial-mini">
+        <div class="q">“Замість ‘сигналів’ отримав алгоритм і підтримку. Почав стабільно тримати результат.”</div>
+        <div class="who">Ірина • Funding</div>
+      </div>
+      <div class="testimonial-mini">
+        <div class="q">“Дуже зайшли чек-листи і розбори. Економить тижні тестів і нерви.”</div>
+        <div class="who">Денис • CS2</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
       </div>
     </div>
   </section>
-
 
   <!-- TEAM -->
   <section id="team" class="section section-alt">
@@ -1411,12 +1755,8 @@
             <li>Участь у групових розборах та AMA-сесіях</li>
           </ul>
           <div class="price-cta-wrap">
-            <button class="btn-price btn-scramble">
-              Оплатити банківською карткою
-            </button>
-            <button class="btn-price-secondary">
-              Оплатити USDT / іншою криптовалютою
-            </button>
+            <button class="btn-price btn-scramble">Оплатити банківською карткою</button>
+            <button class="btn-price-secondary">Оплатити USDT / іншою криптовалютою</button>
           </div>
         </article>
 
@@ -1432,18 +1772,14 @@
             стратегій, адаптації під власний банк та подальшого масштабування.
           </div>
           <ul class="price-list">
-            <li>Усе, що входить до пакету “1 місяць”</li>
+            <li>Усе, що входить до пакету "1 місяць"</li>
             <li>Доступ до середньо- та довгострокових моделей роботи</li>
             <li>Пріоритет під час AMA-дзвінків</li>
             <li>Розширені можливості щодо партнерських бонусів та рефбеку</li>
           </ul>
           <div class="price-cta-wrap">
-            <button class="btn-price btn-scramble">
-              Оплатити банківською карткою
-            </button>
-            <button class="btn-price-secondary">
-              Оплатити USDT / іншою криптовалютою
-            </button>
+            <button class="btn-price btn-scramble">Оплатити банківською карткою</button>
+            <button class="btn-price-secondary">Оплатити USDT / іншою криптовалютою</button>
           </div>
         </article>
 
@@ -1459,18 +1795,14 @@
             систему на горизонті пів року й більше.
           </div>
           <ul class="price-list">
-            <li>Усе, що входить до пакету “3 місяці”</li>
+            <li>Усе, що входить до пакету "3 місяці"</li>
             <li>Поглиблена участь у житті спільноти</li>
             <li>Першочерговий доступ до нових інструментів та сервісів</li>
-            <li>Індивідуальний зворотний зв’язок щодо стратегії</li>
+            <li>Індивідуальний зворотний зв'язок щодо стратегії</li>
           </ul>
           <div class="price-cta-wrap">
-            <button class="btn-price btn-scramble">
-              Оплатити банківською карткою
-            </button>
-            <button class="btn-price-secondary">
-              Оплатити USDT / іншою криптовалютою
-            </button>
+            <button class="btn-price btn-scramble">Оплатити банківською карткою</button>
+            <button class="btn-price-secondary">Оплатити USDT / іншою криптовалютою</button>
           </div>
         </article>
       </div>
@@ -1496,10 +1828,5 @@
       </div>
     </div>
   </footer>
-
-  
-  </script>
 </body>
-
 </html>
-
